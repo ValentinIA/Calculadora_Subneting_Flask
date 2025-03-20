@@ -1,0 +1,16 @@
+{% extends "base.html" %} 
+
+{% block title %}Calculadora subneting{% endblock %}
+
+{% block header %}
+
+    <h1>Calculadora de Red</h1>
+
+{% endblock %}
+
+{% block cuerpo %}
+
+    <a href="{{ url_for('login') }}">Iniciar sesion</a>
+    <a href="{{ url_for('registro') }}">Registrarse</a>
+
+{% endblock %}

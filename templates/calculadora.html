@@ -1,0 +1,34 @@
+{% extends "base.html" %} 
+
+{% block title %}Calculadora subneting{% endblock %}
+
+{% block cuerpo %}
+
+<form method="post">
+    <label for="ip">Ip:</label>
+    <input type="text" name="ip" id="form-ip" required>
+    <label for="mascara">Mascara de red:</label>
+    <input type="number" name="mascara" id="form-mascara" min=1 max="32" required>
+    <input type="submit" value="Calcular">
+</form>
+
+{% if resultado %}
+
+    <div>
+            <p>Dirección IP: {{resultado.ip}}/{{resultado.mascara}}</p>
+            <p>Máscara (decimal): {{resultado.decimal(resultado.masc())}}</p>
+            <p>Dirección de red: {{resultado.ip_red()}}</p>
+            <p>Primer host utilizable: {{resultado.primer_host()}}</p>
+            <p>Último host utilizable: {{resultado.ultimo_host()}}</p>
+            <p>Dirección de broadcast: {{resultado.ip_broadcast()}}</p>
+            <p>Número de hosts utilizables: {{resultado.num_hosts()}}</p>
+    </div>
+
+{% endif %}
+
+
+<form action="{{ url_for('logout') }}" method="post">
+    <input type="submit" class="logout-btn" value="Cerrar sesión">
+</form>
+
+{% endblock %}
