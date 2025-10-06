@@ -14,10 +14,15 @@ def build():
 
     @app.route("/", methods=["GET", "POST"])
     def index():
+        '''
+        Comprobar sesion
         if session.get("usuario"):
             return redirect(url_for("calculadora"))
         else:
             return render_template("Index.html")
+        
+        '''
+        return redirect(url_for("calculadora"))
 
     @app.route("/login", methods=["GET","POST"])
     def login():
@@ -67,9 +72,11 @@ def build():
 
     @app.route("/calculadora", methods=["GET","POST"])
     def calculadora():
-        
+        '''
+        Comprobar sesion
         if not session.get("usuario"):
             return redirect(url_for("index"))
+        '''
 
         resultado = None
 
